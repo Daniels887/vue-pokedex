@@ -1,19 +1,26 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <div v-for="pokemon in pokemons" v-bind:key="pokemon.name">
+      {{pokemon.name}}
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import api from './services/api';
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  data(){
+    return {
+      pokemons: [],
+    }
+  },
+
+  created() {
+    api.get('api/v2/pokemon?limit=10').then(result => this.pokemons = result.data.results)
+  },
+};
 </script>
 
 <style>
