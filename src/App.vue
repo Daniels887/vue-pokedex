@@ -1,18 +1,20 @@
 <template>
   <div class="container">
-    <div class="container-list" v-show="show">
+    <div class="container-list" v-if="show">
       <div
         v-for="pokemon in pokemons"
         v-bind:key="pokemon.name"
         class="item"
         v-on:click="selectPokemon(pokemon)"
+        v-on:keyup.enter="selectPokemon(pokemon)"
+        tabindex="0"
       >
         <img v-bind:src="pokemon.image" />
         {{pokemon.name}}
       </div>
     </div>
-    <div class="container-pokemon" v-on:click="back">
-      <div v-show="!show" class="pokemon-item">
+    <div class="container-pokemon" v-on:click="back" v-on:keyup.enter="back" v-else>
+      <div class="pokemon-item" tabindex="0">
         <img v-bind:src="pokemon.image" />
         {{ pokemon.name }}
       </div>
@@ -80,8 +82,8 @@ body {
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   align-items: center;
-  height: 100vh;
   grid-gap: 8px;
+  height: 100vh;
 }
 
 .item {
@@ -108,5 +110,22 @@ body {
   padding: 32px;
   align-items: center;
   justify-content: center;
+  border-radius: 8px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+@media (max-width: 600px) {
+  .container {
+    height: 100%;
+  }
+
+  .container-list {
+    padding: 32px;
+    height: 100%;
+  }
+
+  .container-list {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 </style>
