@@ -66,6 +66,8 @@ export default {
 </script>
 
 <style>
+@import url(//db.onlinewebfonts.com/c/f4d1593471d222ddebd973210265762a?family=Pokemon);
+
 body {
   outline: 0;
   margin: 0;
@@ -91,9 +93,16 @@ body {
   flex-direction: column;
   padding: 32px;
   text-align: center;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Pokemon";
   background: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
+  color: rgb(173, 173, 39);
+  cursor: pointer;
+}
+
+.item:focus {
+  box-shadow: 0 0 1pt 3pt yellow;
+  outline: 0;
 }
 
 .container-pokemon {
@@ -111,7 +120,14 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Pokemon";
+  color: rgb(173, 173, 39);
+  cursor: pointer;
+}
+
+.pokemon-item:focus {
+  box-shadow: 0 0 1pt 3pt yellow;
+  outline: 0;
 }
 
 @media (max-width: 600px) {
