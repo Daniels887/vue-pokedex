@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1>Pokémons</h1>
     <div class="container-list" v-if="show">
       <div
         v-for="pokemon in pokemons"
@@ -13,8 +14,8 @@
         {{pokemon.name}}
       </div>
     </div>
-    <div class="container-pokemon" v-on:click="back" v-on:keyup.enter="back" v-else>
-      <div class="pokemon-item" tabindex="0">
+    <div class="container-pokemon" v-else>
+      <div class="pokemon-item" tabindex="0" v-on:click="back" v-on:keyup.enter="back">
         <img v-bind:src="pokemon.image" />
         {{ pokemon.name }}
       </div>
@@ -85,7 +86,18 @@ body {
   justify-items: center;
   align-items: center;
   grid-gap: 8px;
-  height: 100vh;
+  height: 80vh;
+  margin-top: 48px;
+}
+
+h1 {
+  font-size: 72px;
+  margin: 0;
+  text-align: center;
+  font-family: "Pokemon";
+  color: yellow;
+  font-weight: normal;
+  letter-spacing: 4px;
 }
 
 .item {
@@ -109,7 +121,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
 }
 
 .pokemon-item {
@@ -138,6 +150,10 @@ body {
   .container-list {
     padding: 32px;
     height: 100%;
+  }
+
+  .container-pokemon {
+    height: calc(100vh - 93px);
   }
 
   .container-list {
